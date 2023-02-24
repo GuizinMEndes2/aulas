@@ -8,5 +8,5 @@ $twig = new \Twig\Environment($loader);
 $template = $twig-> load('produtos.html');
 
 echo $template->render ([
-    'titulo' => 'produtos',
+    'titulo' => 'produtos'
 ]);
