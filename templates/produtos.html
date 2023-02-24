@@ -4,5 +4,26 @@
 <h1>produtos</h1>
 
 <h2>listagem de produtos</h2>
+<p>ÚLTIMA hora BIXO:{{ "now"|date('d/m/Y H:i:s', 'America/Sao_Paulo') }} </p>
+    <table border ="2">
+        <tr>
+            <th>produtos</th>
+            <th>preco</th>
+        </tr>
+
+        {% for prod in produtos %}
+        <tr>
+            <td>{{ prod.nome }}</td>
+            <td>R${{ prod.preco|number_format(2,',', '.') }}</td>
+        </tr>
+         {% else %}
+         <tr>
+         <td colspan="2">mãe de amigo = meu passatmpo</td>
+         </tr>   
+        {% endfor %}
+
+        
+
+    </table>
 
 {% include "inc/foot.html" %}    
