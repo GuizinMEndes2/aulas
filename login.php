@@ -5,5 +5,5 @@
 
 
     echo $twig->render('login.html', [
-        'aconteceu_erro' => $erro,
+        'erro' => $erro,
     ]);

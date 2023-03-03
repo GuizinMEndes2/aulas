@@ -1,5 +1,7 @@
-{% if aconteceu_erro %}
-    Aconteceu um grande erro!🔥🔥🔥🔥🔥🔥🔥
+{% if erro == 1 %}
+    Uúario e senha inválidos! <img src="https://i.pinimg.com/474x/7f/72/3f/7f723f0cce8d33df763d0c098a825829.jpg"  alt="" width="350px" >
+{% elseif erro == 2 %}
+    Qual foi? Valeu Natalina👍
 {% endif %}
 <form action="login_verifica.php" method="post">
     <div>
