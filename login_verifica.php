@@ -4,18 +4,26 @@ require('./pdo.inc.php');
     $pass =$_POST['pass'];
 
 //cria a consulta e aguarda os dados
-    $sql = $pdo->prepare('SELECT * FROM usuarios WHERE username  = :usr AND senha = :pass');
+    $sql = $pdo->prepare('SELECT * FROM usuarios WHERE username  = :usr');
 
     //adiciona os dados na consulta
-    $sql->bindParam('usr',$user);
-    $sql->bindParam('   pass',$pass);
+    $sql->bindParam(':usr', $user);
+
 
     $sql->execute();
 
 
-    if ($sql->rowCount()){
+    if ($sql->rowCount()) {
 
         $user = $sql->fetch(PDO::FETCH_OBJ);
+
+
+        //verificar senha
+        if(!password_verify($pass, $user->senha)){
+            header('location:login.php?erro=1');
+            die;
+        
+        }
 
         session_start();
         $_SESSION['user'] = $user->nome;
@@ -23,6 +31,7 @@ require('./pdo.inc.php');
         
         header('location: boasvindas.php');
         die;
+        
     } else {
         header('location: login.php?erro=1');
 
