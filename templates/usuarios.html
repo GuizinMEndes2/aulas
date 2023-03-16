@@ -1,0 +1,28 @@
+{% include "inc/foot.html" %}    
+<h1>listagem</h1>
+<table border = 1px solid black>
+    <tr>
+    <td>username</td>
+    <td>admin</td>
+    <td>ativo</td>
+    </tr>
+
+
+{% for usr in usuarios %}
+
+<tr>
+    <td>{{ usr.username}}</td>
+    <td>{{ usr.admin }}</td>
+    <td>{{ usr.ativo }}</td>
+    <td><a href="usuario_apagar.php?id={{ usr.id }}">Apagar</a></td>
+</tr>
+{% else %}
+    <tr>
+        <td cosplan="2">nenhum usuário</td>
+    </tr>
+    
+{% endfor %}
+</table>
+
+<a href="novo_usuario.php">ADD USER</a>
+{% include "inc/foot.html" %}
