@@ -1,9 +1,19 @@
-{% include "inc/head.html" %}    
-
+{% include "inc/head.html" %} 
 <h2>APAGAR USUÁRIO</h2>
 
 <P>Tem certeza disso?</P>
-<p>Nunca mais vai recuperaar isso!</p>
+<img src="img/01.gif" alt="">
+</br>
+<p>Nunca mais vai recuperaar isso😈</p>
+<p><strong>Você está preste a ir de F {{ usuario.username}} </strong></p>
+
+<form action="#" method="post">
+    <input type="hidden" name="id" value="{{ usuario.id }}">
+    <input type="submit" value="APAGAR ESSA COISA">
+    
+
+    <div><a href="usuarios.php">Cancelar</a></div>
+    </form>
 
 
 {% include "inc/foot.html" %}    

@@ -4,7 +4,7 @@ require('./pdo.inc.php');
     $pass =$_POST['pass'];
 
 //cria a consulta e aguarda os dados
-    $sql = $pdo->prepare('SELECT * FROM usuarios WHERE username  = :usr');
+    $sql = $pdo->prepare('SELECT * FROM usuarios WHERE username  = :usr AND ativo = 1 ' );
 
     //adiciona os dados na consulta
     $sql->bindParam(':usr', $user);
