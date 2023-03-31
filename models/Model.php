@@ -22,7 +22,22 @@ class Model{
 
     } 
 
-    public function getAll(){
 
-    } 
+    public function getAll(){
+        $sql = $this->conex->query("SELECT * FROM {$this-> table}");
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+
+
+    }
+    
+    public function GetById($id){
+        $sql = $this->conex->prepare ("SELECT * FROM {$this->table} where id = :id");
+        $sql->bindParam(':id', $id);
+        $sql->execute();
+        $user = $sql->fetchAll(PDO::FETCH_ASSOC); 
+        return $user;
+    }
+    
+    
+
 }

@@ -5,12 +5,13 @@ require('twig_carregar.php');
 require('models/Model.php');
 require('models/Usuario.php');
 
-
+$id = $_GET['id'] ?? false;
 
 $usr = new Usuario();
-$usuarios = $usr->getAll();
+$info = $usr->GetById($id);
+var_dump($info); 
+die;
 
 
-echo $twig->render('usuarios.html',[
-    'usuarios' => $usuarios
+echo $twig->render('usuario_ver.html',[
 ]);
