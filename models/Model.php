@@ -44,12 +44,7 @@ class Model{
 
         //prepara os campos e placeholders
 
-        foreach(array_keys($data) as $field ) {
-            $sql_fields[]= "{$field} = :{$field}";
-
-        }
-
-        $sql_fields = implode(', ', $sql_fields);
+        $sql_fields = $this->sql_fields($data);
 
         //Monta a consulta
         $sql .= " SET {$sql_fields}";
@@ -68,6 +63,34 @@ class Model{
 
         
 
+    }
+
+    public function update($data, $id) {
+
+        unset($data['id']);
+
+
+        $sql = "UPDATE {$this->table}";
+        $sql.= ' SET ' . $this->sql_fields($data);
+        $sql.= ' WHERE id = :id';
+        $data['id'] = $id;
+
+        $upd = $this->conex->prepare($sql);
+        $upd ->execute($data);
+
+        
+
+    } 
+
+    private function sql_fields($data){
+        foreach(array_keys($data) as $field ) {
+            $sql_fields[]= "{$field} = :{$field}";
+    
+        }
+    
+    
+
+        return implode(', ', $sql_fields);
     }
     
 

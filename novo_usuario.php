@@ -12,9 +12,9 @@
     <div><input type="password" name="pass" placeholder="Senha"></div>
     <br>
     
-    <div><input type="checkbox" name="admi" VALUE="1"  placeholder="Admi">
-    <label for="admi">Admin?</label></div> 
-    <div><input type="checkbox" name="admi" VALUE="0"  placeholder="Admi">
+    <div><input type="radio" name="admi" VALUE="1"  placeholder="Admi">
+    <label for="admi">Quer Admin?</label></div> 
+    <div><input type="radio" name="admi" VALUE="0"  placeholder="Admi">
     <label for="admi">Admin não</label></div> 
 
     <div><input type="submit" value="Gravar"></div>

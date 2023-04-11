@@ -2,4 +2,23 @@
 
 {% block conteudo %}
     <p>username:{{usuario.username}}</p>
+
+    <form action="usuario_atualizar.php" method="post">
+    <input type="hidden" name="id" value="{{usuario.id}}">
+    <div>
+    nome:
+    <input type="text" name="nome" value="{{usuario.nome}}">
+    </div>
+    <div>
+    email:
+    <input type="text" name="email" value="{{usuario.email}}">
+    </div>
+    <div>
+    username
+    <input type="text" name="username" value="{{usuario.username}}">
+    </div>
+    <input type="submit" value="Atualizar">
+    </form>
+
+
 {% endblock %}
