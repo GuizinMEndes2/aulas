@@ -6,7 +6,8 @@ $nome = $_POST['nome']?? false;
 $email = $_POST['email'] ?? false;
 $username =$_POST['username']?? false; 
 
-if(!$nome|| !$email || $username){
+if(!$nome|| !$email || !$username){
+    echo 'faltam informações';
     die;
 }
 
