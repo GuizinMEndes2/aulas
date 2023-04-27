@@ -1,7 +1,9 @@
-{% include "inc/foot.html" %} 
 
+{% extends "inc/base.html" %}
 
-<h1>listagem</h1>
+{% block titulo %}Usuario{% endblock %}
+
+{% block conteudo %}
 <table border = 1px solid black>
     <tr>
     <td>username</td>
@@ -13,10 +15,10 @@
 {% for usr in usuarios %}
 
 <tr>
-    <td> <a href="usuario_ver.php?id={{usr.id}}">{{ usr.username}}</a></td>
+    <td> <a href="/usuario_ver/{{usr.id}}">{{ usr.username}}</a></td>
     <td>{{ usr.admin }}</td>
     <td>{{ usr.ativo }}</td>
-    <td><a href="usuario_apagar.php?id={{ usr.id }}">Apagar</a></td>
+    <td><a href="/usuario_apagar/{{ usr.id }}">Apagar</a></td>
 </tr>
 {% else %}
     <tr>
@@ -27,4 +29,4 @@
 </table>
 
 <a href="novo_usuario.php">ADD USER</a>
-{% include "inc/foot.html" %}
+{% endblock %}

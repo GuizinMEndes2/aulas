@@ -23,8 +23,16 @@ class Model{
     } 
 
 
-    public function getAll(){
-        $sql = $this->conex->query("SELECT * FROM {$this->table} ");
+    public function getAll($where = false, $where_glue = 'AND') {
+        if ($where) {
+            $where_sql = $this->where_fields($where, $where_glue);
+
+        $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE {$where_sql}");
+        $sql->execute($where);
+        
+    }  else {
+        $sql = $this->conex->prepare("SELECT * FROM{$this->table}");
+    }
         return $sql->fetchAll(PDO::FETCH_ASSOC);
 
 
@@ -80,18 +88,30 @@ class Model{
 
         
 
-    } 
-
-    private function sql_fields($data){
+    }
+    
+    private function map_fields($data){
+        {
         foreach(array_keys($data) as $field ) {
             $sql_fields[]= "{$field} = :{$field}";
     
         }
-    
-    
+        return $sql_fields;
+    }
+}
 
+    private function sql_fields($data){
+        $sql_fields = $this->map_fields($data);
         return implode(', ', $sql_fields);
+        }
+
+    private function where_fields($data, $glue = 'AND')
+    {
+        $glue = $glue = 'OR' ? ' OR ' : ' AND ';
+        $fields = $this->map_fields($data);
+        return implode($glue, $fields);
     }
     
-
-}
+        
+    }
+    
