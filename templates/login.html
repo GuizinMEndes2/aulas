@@ -1,3 +1,10 @@
+
+{% extends "inc/base.html" %}
+
+{% block titulo %}Usuario{% endblock %}
+
+{% block conteudo %}
+
 {% if erro == 1 %}
     Uúario e senha inválidos! <img src="https://i.pinimg.com/474x/7f/72/3f/7f723f0cce8d33df763d0c098a825829.jpg"  alt="" width="350px" >
 {% elseif erro == 2 %}
@@ -6,18 +13,19 @@
     tudo certo, só vai meu parceiro pois alterado foi sua senha 👀
         
 {% endif %}
-<form action="login_verifica.php" method="post">
-    <div>
-        <input type="text" name="user" placeholder="usúario">
+<form class="space-y-5" action="login_verifica.php" method="post">
+    <div class="mx-auto max-w-xs" >
+        <input  class="mb-1 block text-sm font-medium text-gray-700" type="text" name="user" placeholder="usúario">
     </div>
     <div>
-        <input type="password" name="pass" placeholder="senha">
+        <input  class="mb-1 block text-sm font-medium text-gray-700" type="password" name="pass" placeholder="senha">
     </div>
     <div>
         <input type="submit" value="Acessar">
     </div>
     <div>
-        <a href="recuperar_senha.php ">Não me Alembro </a>
+        <a href="recuperar_senha.php ">Não me Alembro</a>
     </div>
 
 </form>
+{% endblock %}
